@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解扫描=======================-->
+    <!-- 在指定的包下扫描注解以及注册bean -->
+	<!-- <context:component-scan base-package="com.imooc"/> -->
+	<!-- 只扫描注解不注册Bean -->
+     <context:annotation-config/>
+    <!-- xml和注解混合开发：bean的注册放在xml中层次清晰，属性注入在注解中 -->
+    <bean id="userService" class="com.imooc.ioc.demo1.UserService"></bean>
+
+</beans>
+
+<!-- xml配置方式 -->
