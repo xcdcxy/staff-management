@@ -10,10 +10,9 @@ public class Test {
 	@org.junit.Test
 	public void test() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		StudentDao studentDao = (StudentDao) context.getBean("studentDaoProxy");
+		StudentDao studentDao = (StudentDao) context.getBean("studentDao");
+		CustomerDao customerDao = (CustomerDao) context.getBean("customerDao");
 		studentDao.update();
-		studentDao.delete();
-		studentDao.save();
-		studentDao.find();
+		customerDao.save();
 	}
 }

@@ -4,31 +4,45 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
      <!--配置目标类=======================-->
-    <bean id="studentDao" class="com.imooc.StudentDaoImpl"/>
+   <!--  <bean id="studentDao" class="com.imooc.StudentDaoImpl"/> -->
 
     <!--前置通知类型=====================-->
-    <bean id="myBeforeAdvice" class="com.imooc.MyBeforeAdvice"/>
+    <!-- <bean id="myBeforeAdvice" class="com.imooc.MyBeforeAdvice"/> -->
     
     <!--一般的切面是使用通知作为切面的，因为要对目标类的某个方法进行增强就需要配置一个带有切入点的切面-->
-    <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+    <!-- <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"> -->
          <!--pattern中配置正则表达式：.任意字符  *任意次数 -->
    		 <!--<property name="pattern" value=".*save.*"/>-->
-         <property name="patterns" value=".*update.*,.*save.*"/>
+    <!--      <property name="patterns" value=".*update.*,.*save.*"/>
     	 <property name="advice" ref="myBeforeAdvice"/>
 	 </bean>
-    
+     -->
 
     <!--Spring的AOP 产生代理对象-->
-    <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <!-- <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean"> -->
         <!--配置目标类-->
-        <property name="target" ref="studentDao"/>
+        <!-- <property name="target" ref="studentDao"/> -->
         <!--实现的接口-->
-        <property name="proxyInterfaces" value="com.imooc.StudentDao"/>
+        <!-- <property name="proxyInterfaces" value="com.imooc.StudentDao"/> -->
         <!--采用拦截的名称-->
         <!-- <property name="interceptorNames" value="myBeforeAdvice"/> -->
         <!-- 带有切点的切面 -->
-        <property name="interceptorNames" value="myAdvisor"/>        
+        <!-- <property name="interceptorNames" value="myAdvisor"/> -->        
         <!-- 强制使用cglib -->
         <!-- <property name="optimize" value="true"></property> -->
+    <!-- </bean> -->
+    
+    <!-- 基于beanName的自动代理 -->
+    <!-- 在生成类的过程中产生代理类 -->
+    <!-- 被代理类 -->
+    <bean id="studentDao" class="com.imooc.StudentDaoImpl"/>
+    <bean id="customerDao" class="com.imooc.CustomerDao"/>
+    <!-- 通知类型 -->
+    <bean id="myBeforeAdvice" class="com.imooc.MyBeforeAdvice"/>
+    <!-- 自动代理 -->
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+    	<!-- 代理所有以Dao结尾的bean -->
+        <property name="beanNames" value="*Dao"/>
+        <property name="interceptorNames" value="myBeforeAdvice"/>
     </bean>
 </beans>
