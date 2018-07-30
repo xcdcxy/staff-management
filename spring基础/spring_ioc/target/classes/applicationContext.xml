@@ -33,7 +33,7 @@
     <!-- </bean> -->
     
     <!-- 基于beanName的自动代理 -->
-    <!-- 在生成类的过程中产生代理类 -->
+    <!-- 在生成类的过程中产生代理类，缺点是只能增强所有方法 -->
     <!-- 被代理类 -->
     <bean id="studentDao" class="com.imooc.StudentDaoImpl"/>
     <bean id="customerDao" class="com.imooc.CustomerDao"/>
