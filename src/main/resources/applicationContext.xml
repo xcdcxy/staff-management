@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!--开启注解扫描=======================-->
-    <!-- 在指定的包下扫描注解以及注册bean -->
-	<!-- <context:component-scan base-package="com.imooc"/> -->
-	<!-- 只扫描注解不注册Bean -->
-     <context:annotation-config/>
-    <!-- xml和注解混合开发：bean的注册放在xml中层次清晰，属性注入在注解中 -->
-    <bean id="userService" class="com.imooc.ioc.demo1.UserService"></bean>
+     <!--配置目标类=======================-->
+    <bean id="studentDao" class="com.imooc.StudentDaoImpl"/>
 
+    <!--前置通知类型=====================-->
+    <bean id="myBeforeAdvice" class="com.imooc.MyBeforeAdvice"/>
+    
+    <!--一般的切面是使用通知作为切面的，因为要对目标类的某个方法进行增强就需要配置一个带有切入点的切面-->
+    <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+         <!--pattern中配置正则表达式：.任意字符  *任意次数 -->
+   		 <!--<property name="pattern" value=".*save.*"/>-->
+         <property name="patterns" value=".*update.*,.*save.*"/>
+    	 <property name="advice" ref="myBeforeAdvice"/>
+	 </bean>
+    
+
+    <!--Spring的AOP 产生代理对象-->
+    <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--配置目标类-->
+        <property name="target" ref="studentDao"/>
+        <!--实现的接口-->
+        <property name="proxyInterfaces" value="com.imooc.StudentDao"/>
+        <!--采用拦截的名称-->
+        <!-- <property name="interceptorNames" value="myBeforeAdvice"/> -->
+        <!-- 带有切点的切面 -->
+        <property name="interceptorNames" value="myAdvisor"/>        
+        <!-- 强制使用cglib -->
+        <!-- <property name="optimize" value="true"></property> -->
+    </bean>
 </beans>
-
-<!-- xml配置方式 -->
