@@ -16,7 +16,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class MyAspectAnno {
 	
-	// 前置通知
+	// 前置通知  返回值 方法名 (..)参数任意
 	/*@Before(value="execution(* com.aspectJ.ProductDao.save(..))")
 	public void before(JoinPoint joinPoint) {
 		// joinpint为可配置参数（连接点信息）

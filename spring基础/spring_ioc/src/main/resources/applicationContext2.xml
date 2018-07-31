@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 基于XML的AOP开发 -->
+	
+	<!-- 配置被代理对象 -->
+	<bean id="customerDao" class="com.xmlAspect.CustomerDaoImpl"></bean>
+	<!-- 配置切面对象 -->
+	<bean id="proxy" class="com.xmlAspect.Proxy"></bean>
+	<!-- aop配置 -->
+	<aop:config>
+			<!-- 切点 -->
+			<aop:pointcut expression="execution(* com.xmlAspect.CustomerDaoImpl.update(..))" id="before"/>			
+			<aop:pointcut expression="execution(* com.xmlAspect.CustomerDaoImpl.delete(..))" id="around"/>			
+			<!-- 切面 -->
+			<aop:aspect ref="proxy">
+				<!-- 前置通知 -->
+				<aop:before method="before" pointcut-ref="before"/>
+				<aop:around method="around" pointcut-ref="around" />
+			</aop:aspect>
+	</aop:config>
+
+</beans>
