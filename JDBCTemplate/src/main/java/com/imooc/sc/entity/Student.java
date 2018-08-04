@@ -3,6 +3,10 @@ package com.imooc.sc.entity;
 import java.util.Date;
 
 public class Student {
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", born=" + born + "]";
+	}
 	private int id;
 	private String name;
 	 private String sex;
