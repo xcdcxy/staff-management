@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- UserService的创建权交给了Spring -->
 <!--    <bean id="userService" class="com.imooc.ioc.demo1.UserServiceImpl">
-        <property name="name" value="李四"/>
-    </bean>-->
+        		<property name="name" value="李四"/>
+   		 </bean>-->
 
     <!--Bean的实例化的三种方式============================-->
     <!--第一种：无参构造器的方式-->
