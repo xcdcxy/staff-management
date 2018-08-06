@@ -18,7 +18,7 @@
 		<result property="leaveTime" column="leave_time"></result>
 		<result property="bornDate" column="born_date"></result>
 		<result property="info" column="info"></result>
-		<!-- 嵌套 -->
+		<!-- 嵌套查询 -->
 		<association property="department" column="did" select="com.imooc.sm.dao.DepartmentDao.selectById"></association>
 	</resultMap>
 	<!-- 插入员工数据 -->
@@ -27,8 +27,23 @@
         values(#{account},#{password},#{status},#{did},#{name},#{sex},#{idNumber},#{workTime},#{leaveTime},#{bornDate},#{info})
 	</insert>
 	<!-- 删除员工 -->
+	<!-- 传递进来的单参数可以取任意名 -->
 	<delete id="delete">
-	
+		delete from staff where id_number = #{id}
 	</delete>
+	<!-- 修改员工信息 -->
+	<update id="update">
+		update staff set account=#{account},password=#{password},status=#{status},
+        did=#{did},name=#{name},sex=#{sex},id_number=#{idNumber},
+        work_time=#{workTime},leave_time=#{leaveTime},born_date=#{bornDate},info=#{info} where id=#{id}
+	</update>
+	<!-- 查询单个员工 -->
+	<select id="selectById" resultMap="resultMap">
+		select * from staff where id_number = #{id}
+	</select>
+	<!-- 查询所有员工 -->
+	<select id="selectAll"  resultMap="resultMap">
+		select * from staff 
+	</select>
 </mapper>
 
