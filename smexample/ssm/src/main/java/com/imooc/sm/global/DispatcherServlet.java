@@ -4,30 +4,35 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import javax.naming.Context;
-import javax.servlet.GenericServlet;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * 核心控制器 (GenericServlet是servlet祖先，缺失doget,dopost方法)
  */
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	// 用于加载spring配置文件
-	private ApplicationContext context;
-	
-	@Override
-	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       
+	private ApplicationContext context;    
 
+
+	public void init(ServletConfig config) throws ServletException {
+		super.init();
+		System.out.println("初始化");
+		// 加载spring配置文件
+		context = new ClassPathXmlApplicationContext("spring.xml");		
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("进入");
 		/*
 		 servlet名字:   /staff/add.do    /login.do
@@ -70,16 +75,6 @@ public class DispatcherServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
-	}
-
-	
-	
-	@Override
-	public void init() throws ServletException {
-		super.init();
-		System.out.println("初始化");
-		// 加载spring配置文件
-		context = new ClassPathXmlApplicationContext("spring.xml");		
 	}
 
 }

@@ -5,4 +5,4 @@
  * @author Lenovo
  *
  */
-package com.imooc.sm;
+package com.imooc.sm.global;
