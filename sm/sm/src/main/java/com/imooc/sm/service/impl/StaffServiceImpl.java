@@ -30,9 +30,10 @@ public class StaffServiceImpl implements StaffService {
 
 	}
 
+	// 根据编号获取员工信息
 	public Staff get(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Staff staff = staffDao.selectById(id);
+		return staff;
 	}
 
 	/*

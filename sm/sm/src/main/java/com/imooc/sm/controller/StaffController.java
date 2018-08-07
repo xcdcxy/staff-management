@@ -43,12 +43,12 @@ public class StaffController {
 	/*
 	 * 查看员工信息
 	 */
-	public void remove(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 员工编号
+	public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 获取员工编号
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		// 删除员工
-		staffService.remove(id);
-		response.sendRedirect("list.do");
+		Staff staff = staffService.get(id);
+		request.setAttribute("OBJ", staff);
+		request.getRequestDispatcher("../staff_detail.jsp").forward(request, response);
 	}	
 	
 	
