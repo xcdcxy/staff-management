@@ -28,7 +28,10 @@ public class SelfController {
 	 */
 	public void toLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 跳转至登录界面
+		if(selfService == null)
+			System.out.println("selfService is null!");
 		request.getRequestDispatcher("login.jsp").forward(request, response);
+		
 	} 
 	
 	/*
@@ -51,8 +54,17 @@ public class SelfController {
 		}
 	} 
 	
-	// 跳转主页面
+	/*
+	 *  跳转主页面
+	 */
 	 public void main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        request.getRequestDispatcher("index.jsp").forward(request,response);
-	    }
+	 }
+	 
+	 /*
+	  * 查看个人信息
+	  */
+	 public void info(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 request.getRequestDispatcher("../info.jsp").forward(request,response);
+	}
 }

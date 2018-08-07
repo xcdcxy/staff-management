@@ -14,7 +14,7 @@ public class Staff {
 	private Integer did; // 部门编号
 	private String name; // 姓名
 	private String sex; // 性别
-	private Integer idNumber;// 员工编号
+	private String idNumber;// 员工编号
 	private Date workTime;// 入职时间
 	private Date leaveTime;// 离职时间
 	private Date bornDate;// 出生日期
@@ -76,10 +76,10 @@ public class Staff {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public Integer getIdNumber() {
+	public String getIdNumber() {
 		return idNumber;
 	}
-	public void setIdNumber(Integer idNumber) {
+	public void setIdNumber(String idNumber) {
 		this.idNumber = idNumber;
 	}
 	public Date getWorkTime() {

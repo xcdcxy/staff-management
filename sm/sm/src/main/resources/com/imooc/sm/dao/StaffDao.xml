@@ -29,7 +29,7 @@
 	<!-- 删除员工 -->
 	<!-- 传递进来的单参数可以取任意名 -->
 	<delete id="delete">
-		delete from staff where id_number = #{id}
+		delete from staff where id = #{id}
 	</delete>
 	<!-- 修改员工信息 -->
 	<update id="update">
@@ -39,7 +39,7 @@
 	</update>
 	<!-- 查询单个员工 -->
 	<select id="selectById" resultMap="resultMap">
-		select * from staff where id_number = #{id}
+		select * from staff where id = #{id}
 	</select>
 	<!-- 查询所有员工 -->
 	<select id="selectAll"  resultMap="resultMap">
