@@ -21,8 +21,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	public void remove(Integer id) {
-		// TODO Auto-generated method stub
-
+		// 根据编号删除部门
+		departmentDao.delete(id);
 	}
 
 	public void edit(Department department) {

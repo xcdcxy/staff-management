@@ -16,6 +16,8 @@
  	<select id="selectAll" resultMap="resultMap">
  		select * from department 
  	</select> 	
- 	
+ 	<delete id="remove">
+ 		delete from department where id = #{id}
+ 	</delete>
 </mapper>
 
