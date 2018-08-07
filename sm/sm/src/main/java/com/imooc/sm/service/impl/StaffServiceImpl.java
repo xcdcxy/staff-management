@@ -1,5 +1,7 @@
 package com.imooc.sm.service.impl;
 
+import java.awt.image.RescaleOp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,12 @@ public class StaffServiceImpl implements StaffService {
 	private StaffDao staffDao;
 	
 	public void add(Staff staff) {
-		// TODO Auto-generated method stub
-
+		// 完善员工信息
+		staff.setPassword("123456");
+		staff.setWorkTime(new Date());
+		staff.setStatus("正常");
+		// 增加员工信息
+		staffDao.insert(staff);
 	}
 
 	public void remove(Integer id) {
@@ -26,8 +32,8 @@ public class StaffServiceImpl implements StaffService {
 	}
 
 	public void edit(Staff staff) {
-		// TODO Auto-generated method stub
-
+		// 修改员工信息
+		staffDao.update(staff);		
 	}
 
 	// 根据编号获取员工信息
