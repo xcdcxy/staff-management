@@ -29,8 +29,7 @@ public class SelfServiceImpl implements SelfService {
 	}
 
 	public void changePassword(Integer id, String password) {
-		Staff staff = new Staff();
-		staff.setId(id);
+		Staff staff = staffDao.selectById(id);		
 		staff.setPassword(password);
 		staffDao.update(staff);
 	}
