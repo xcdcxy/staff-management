@@ -49,6 +49,8 @@ public class DepartmentController {
 		// 部门编号
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		Department department = departmentService.get(id);
+		System.out.println("部门编号" + id);
+		department.setId(id);
 		request.setAttribute("OBJ", department);
 		response.sendRedirect(request.getContextPath() + "/department_edit.jsp");
 	}
