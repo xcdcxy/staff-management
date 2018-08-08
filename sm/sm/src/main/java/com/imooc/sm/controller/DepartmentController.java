@@ -48,11 +48,9 @@ public class DepartmentController {
 	public void toEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 部门编号
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		Department department = departmentService.get(id);
-		System.out.println("部门编号" + id);
-		department.setId(id);
-		request.setAttribute("OBJ", department);
-		response.sendRedirect(request.getContextPath() + "/department_edit.jsp");
+		System.out.println("部门编号" + id);		
+		request.setAttribute("ID", id);		
+		request.getRequestDispatcher("/department_edit.jsp").forward(request, response);
 	}
 	
 	/*

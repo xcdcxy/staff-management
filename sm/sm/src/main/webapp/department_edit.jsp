@@ -32,21 +32,21 @@
             </div>
             <div class="space_hx">&nbsp;</div>
             <form action="${pageContext.request.contextPath}/department/edit.do" method="post" name="addForm">
-                <input  name="id" type="hidden" value="${OBJ.id}"/>
+                <input  name="id" type="hidden" value="${ID}"/>
                 <div class="xjhy">
                     <!--高级配置-->
                     <ul class="hypz gjpz clearfix">
                         <li class="clearfix">
                             <span class="title">名称：</span>
                             <div class="li_r">
-                                <input class="chang" name="name" type="text" value="${OBJ.name}"/>
+                                <input class="chang" name="name" type="text" value=""/>
                                 <i>*</i>
                             </div>
                         </li>
                         <li class="clearfix">
                             <span class="title">地址：</span>
                             <div class="li_r">
-                                <input class="chang" name="address" type="text" value="${OBJ.address}"/>
+                                <input class="chang" name="address" type="text" value=""/>
                             </div>
                         </li>
                         <li class="tj_btn">
