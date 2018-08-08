@@ -22,7 +22,7 @@
  	<update id="update">
  		update department set name = #{name},address = #{address} where id = #{id}
  	</update>
- 	<insert id="insert" useGeneratedKeys="true">
+ 	<insert id="insert" >
  		insert into department(name,address) values(#{name},#{address})
  	</insert>
 </mapper>

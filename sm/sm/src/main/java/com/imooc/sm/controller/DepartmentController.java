@@ -70,7 +70,8 @@ public class DepartmentController {
 		// 修改部门信息
 		departmentService.edit(department);
 		
-		request.getRequestDispatcher("/department/list.do").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/department/list.do");
+		
 	}
 	
 	/*
