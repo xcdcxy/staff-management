@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.imooc.sm.dao.LogDao">
+ 	<resultMap type="Log" id="resultMap">
+ 		<result property="oprTime" column="opr_time"/>
+ 		<result property="type" column="type"/>
+ 		<result property="operator" column="operator"/>
+ 		<result property="moudle" column="moudle"/>
+ 		<result property="operation" column="operation"/>
+ 		<result property="result" column="result"/> 		
+ 	</resultMap>
+ 	<!-- 插入一条日志 -->
+ 	<insert id="insert">
+ 		 insert into log values(#{oprTime},#{type},#{operator},#{moudle},#{operation},#{result})
+ 	</insert>
+ 	<!-- 根据类型查询日志 -->
+ 	<select id="selectByType" resultMap="resultMap">
+        select * from log where type = #{type} order by opr_time desc
+    </select>
+ 
+ </mapper>
