@@ -60,7 +60,7 @@
             <div class="r_foot">
                 <div class="r_foot_m">
                     <a href="javascript: history.go(-1)" class="btn">返回</a>
-                </div>
+                </div>  
             </div>
             <!--右边底部-->
         </div>
