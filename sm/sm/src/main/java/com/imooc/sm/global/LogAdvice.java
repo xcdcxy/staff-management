@@ -43,7 +43,7 @@ public class LogAdvice {
 		log.setOperator(staff.getAccount());
 		log.setResult("正常");
 		logService.addOperationLog(log);
-	}
+	}	
 	
 	/*
 	 * 系统日志
