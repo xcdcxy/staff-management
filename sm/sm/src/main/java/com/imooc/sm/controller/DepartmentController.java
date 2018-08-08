@@ -72,4 +72,27 @@ public class DepartmentController {
 		
 		request.getRequestDispatcher("/department/list.do").forward(request, response);
 	}
+	
+	/*
+	 * 准备增加部门信息	
+	 */
+	public void toAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		response.sendRedirect(request.getContextPath() + "/department_add.jsp");
+	}
+	
+	/*
+	 * 准备增加部门信息	
+	 */
+	public void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		// 获取部门信息
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		
+		Department department = new Department();
+		department.setName(name);
+		department.setAddress(address);
+		// 增加部门
+		departmentService.add(department);
+		request.getRequestDispatcher("/department/list.do").forward(request, response);
+	}
 }

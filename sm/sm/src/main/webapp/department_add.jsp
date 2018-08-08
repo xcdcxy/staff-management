@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
-    <title>编辑部门</title>
+    <title>添加部门</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/thems.css">
-    <script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
         $(function(){
             //自适应屏幕宽度
@@ -28,25 +28,24 @@
     <div class="right_m">
         <div class="hy_list">
             <div class="box_t">
-                <span class="name">编辑部门</span>
+                <span class="name">添加部门</span>
             </div>
             <div class="space_hx">&nbsp;</div>
-            <form action="${pageContext.request.contextPath}/department/edit.do" method="post" name="addForm">
-                <input  name="id" type="hidden" value="${OBJ.id}"/>
+            <form action="${pageContext.request.contextPath }/department/add.do" method="post" name="addForm">
                 <div class="xjhy">
                     <!--高级配置-->
                     <ul class="hypz gjpz clearfix">
                         <li class="clearfix">
                             <span class="title">名称：</span>
                             <div class="li_r">
-                                <input class="chang" name="name" type="text" value="${OBJ.name}"/>
+                                <input class="chang" name="name" type="text"/>
                                 <i>*</i>
                             </div>
                         </li>
                         <li class="clearfix">
                             <span class="title">地址：</span>
                             <div class="li_r">
-                                <input class="chang" name="address" type="text" value="${OBJ.address}"/>
+                                <input class="chang" name="address" type="text"/>
                             </div>
                         </li>
                         <li class="tj_btn">

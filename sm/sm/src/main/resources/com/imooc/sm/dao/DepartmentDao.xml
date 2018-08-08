@@ -16,8 +16,14 @@
  	<select id="selectAll" resultMap="resultMap">
  		select * from department 
  	</select> 	
- 	<delete id="remove">
+ 	<delete id="delete">
  		delete from department where id = #{id}
  	</delete>
+ 	<update id="update">
+ 		update department set name = #{name},address = #{address} where id = #{id}
+ 	</update>
+ 	<insert id="insert" useGeneratedKeys="true">
+ 		insert into department(name,address) values(#{name},#{address})
+ 	</insert>
 </mapper>
 

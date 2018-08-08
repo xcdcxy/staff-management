@@ -16,8 +16,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	private DepartmentDao departmentDao;
 	
 	public void add(Department department) {
-		// TODO Auto-generated method stub
-
+		// 增加部门
+		departmentDao.insert(department);
 	}
 
 	public void remove(Integer id) {
@@ -26,8 +26,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	public void edit(Department department) {
-		
-
+		// 修改部门信息
+		departmentDao.update(department);
 	}
 
 	public Department get(Integer id) {
