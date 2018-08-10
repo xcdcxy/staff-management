@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext3.xml")
+@ContextConfiguration("classpath:applicationContext4.xml")
 public class SpringDemo4 {	
 	@Autowired
 	private AccountService accountService;
